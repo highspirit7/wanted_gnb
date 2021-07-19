@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { up, down, between, only } from "styled-breakpoints";
+import { up, down, only } from "styled-breakpoints";
 
 const StyledUl = styled.ul`
   text-align: center;
@@ -89,9 +89,7 @@ const navItemList = [
   { path: "/aiscore/resume", name: "Ai 합격예측" },
 ];
 
-function NavItems() {
-  console.log(window.location.pathname);
-
+function NavItems({ handleMouseHover }) {
   const urlPathname = window.location.pathname.substring(1);
 
   return (
@@ -109,12 +107,23 @@ function NavItems() {
           >
             <a href={item.path}>{item.name}</a>
           </li>
+        ) : item.name === "탐색" ? (
+          <li
+            className={`${
+              urlPathname && item.path.includes(urlPathname) && "selectedNav"
+            }`}
+            key={item.path + item.name}
+            onMouseOver={(event) => handleMouseHover(true)}
+          >
+            <a href={item.path}>{item.name}</a>
+          </li>
         ) : (
           <li
             className={`${
               urlPathname && item.path.includes(urlPathname) && "selectedNav"
             }`}
             key={item.path + item.name}
+            onMouseOver={(event) => handleMouseHover(false)}
           >
             <a href={item.path}>{item.name}</a>
           </li>
