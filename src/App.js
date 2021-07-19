@@ -1,9 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+
+import Gnb from "components/Gnb";
+import Logo from "components/Logo";
+import NavItems from "components/NavItems";
+import AsideItems from "components/AsideItems";
 
 function App() {
   return (
     <div className="App">
+      <Gnb>
+        <Logo />
+        <NavItems />
+        <AsideItems />
+      </Gnb>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
